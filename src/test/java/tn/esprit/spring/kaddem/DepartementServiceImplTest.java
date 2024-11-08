@@ -66,11 +66,15 @@ public class DepartementServiceImplTest {
         departement.setNomDepart("Marketing");
         Departement savedDepartement = departementRepository.save(departement);
 
+        assertNotNull(savedDepartement.getIdDepart(), "Saved departement should have a non-null ID");
+
         savedDepartement.setNomDepart("Sales");
         Departement updatedResult = departementService.update(savedDepartement);
 
+        assertNotNull(updatedResult, "Updated result should not be null");
         assertEquals("Sales", updatedResult.getNomDepart());
     }
+
 
     @Test
     void testRetrieveDepartement() {
