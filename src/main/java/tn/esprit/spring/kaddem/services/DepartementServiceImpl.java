@@ -79,7 +79,7 @@ private final DepartementRepository departementRepository;
 
 	@Override
 	public Departement update(Departement d) {
-		return null;
+		return departementRepository.save(d);
 	}
 
 	@Override
