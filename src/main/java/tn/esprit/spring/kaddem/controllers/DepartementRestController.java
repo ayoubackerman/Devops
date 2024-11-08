@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.spring.kaddem.entities.Departement;
 import tn.esprit.spring.kaddem.entities.DepartementDto;
 import tn.esprit.spring.kaddem.services.IDepartementService;
 

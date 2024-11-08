@@ -9,7 +9,6 @@ import tn.esprit.spring.kaddem.entities.Departement;
 import tn.esprit.spring.kaddem.entities.DepartementDto;
 import tn.esprit.spring.kaddem.repositories.DepartementRepository;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
