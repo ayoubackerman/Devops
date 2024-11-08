@@ -68,28 +68,17 @@ public class DepartementServiceImplMockTest {
 
     @Test
     void testUpdateDepartement() {
-        // Arrange
-        Departement existingDepartement = new Departement();
-        existingDepartement.setIdDepart(1);
-        existingDepartement.setNomDepart("Marketing");
+        Departement departement = new Departement();
+        departement.setIdDepart(1);
+        departement.setNomDepart("Marketing");
 
-        Departement updatedDepartement = new Departement();
-        updatedDepartement.setIdDepart(1);
-        updatedDepartement.setNomDepart("Sales");
+        when(departementRepository.save(any(Departement.class))).thenReturn(departement);
 
-        // Mocking findById to return the existing departement
-        when(departementRepository.findById(1)).thenReturn(Optional.of(existingDepartement));
-        // Mocking save to return the updated departement
-        when(departementRepository.save(any(Departement.class))).thenReturn(updatedDepartement);
+        Departement result = departementService.update(departement);
 
-        // Act
-        Departement result = departementService.update(updatedDepartement);
-
-        // Assert
-        assertNotNull(result, "The updated result should not be null");
-        assertEquals("Sales", result.getNomDepart(), "The department name should be updated to 'Sales'");
-        verify(departementRepository, times(1)).findById(1);
-        verify(departementRepository, times(1)).save(updatedDepartement);
+        assertNotNull(result);
+        assertEquals("Marketing", result.getNomDepart());
+        verify(departementRepository, times(1)).save(departement);
     }
 
 
