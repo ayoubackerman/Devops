@@ -70,5 +70,30 @@ private final DepartementRepository departementRepository;
 		}
 	}
 
+	public List<Departement> retrieve() {
+		return (List<Departement>) departementRepository.findAll();
+	}
+
+	public Departement add(Departement d) {
+		return departementRepository.save(d);
+	}
+
+	@Override
+	public Departement update(Departement d) {
+		return null;
+	}
+
+	@Override
+	public Departement retrieveOne(Integer idDepart) {
+		return departementRepository.findById(idDepart).get();
+	}
+
+
+
+	public void delete(Integer idDepartement) {
+		Departement d=retrieveOne(idDepartement);
+		departementRepository.delete(d);
+	}
+
 
 }

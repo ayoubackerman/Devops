@@ -44,7 +44,7 @@ public class DepartementServiceImplTest {
         dep2.setNomDepart("HR");
         departementRepository.save(dep2);
 
-        List<Departement> result = departementService.retrieveAllDepartements();
+        List<Departement> result = departementService.retrieve();
 
         assertEquals(2, result.size());
     }
@@ -54,7 +54,7 @@ public class DepartementServiceImplTest {
         Departement departement = new Departement();
         departement.setNomDepart("Finance");
 
-        Departement result = departementService.addDepartement(departement);
+        Departement result = departementService.add(departement);
 
         assertNotNull(result.getIdDepart());
         assertEquals("Finance", result.getNomDepart());
@@ -67,7 +67,7 @@ public class DepartementServiceImplTest {
         Departement savedDepartement = departementRepository.save(departement);
 
         savedDepartement.setNomDepart("Sales");
-        Departement updatedResult = departementService.updateDepartement(savedDepartement);
+        Departement updatedResult = departementService.update(savedDepartement);
 
         assertEquals("Sales", updatedResult.getNomDepart());
     }
@@ -78,7 +78,7 @@ public class DepartementServiceImplTest {
         departement.setNomDepart("Operations");
         Departement savedDepartement = departementRepository.save(departement);
 
-        Departement result = departementService.retrieveDepartement(savedDepartement.getIdDepart());
+        Departement result = departementService.retrieveOne(savedDepartement.getIdDepart());
 
         assertNotNull(result);
         assertEquals("Operations", result.getNomDepart());
@@ -90,7 +90,7 @@ public class DepartementServiceImplTest {
         departement.setNomDepart("Logistics");
         Departement savedDepartement = departementRepository.save(departement);
 
-        departementService.deleteDepartement(savedDepartement.getIdDepart());
+        departementService.delete(savedDepartement.getIdDepart());
 
         assertFalse(departementRepository.findById(savedDepartement.getIdDepart()).isPresent());
     }

@@ -44,7 +44,7 @@ public class DepartementServiceImplMockTest {
 
         when(departementRepository.findAll()).thenReturn(Arrays.asList(dep1, dep2));
 
-        List<Departement> result = departementService.retrieveAllDepartements();
+        List<Departement> result = departementService.retrieve();
 
         assertEquals(2, result.size());
         assertEquals("IT", result.get(0).getNomDepart());
@@ -59,7 +59,7 @@ public class DepartementServiceImplMockTest {
 
         when(departementRepository.save(any(Departement.class))).thenReturn(departement);
 
-        Departement result = departementService.addDepartement(departement);
+        Departement result = departementService.add(departement);
 
         assertNotNull(result);
         assertEquals("Finance", result.getNomDepart());
@@ -74,7 +74,7 @@ public class DepartementServiceImplMockTest {
 
         when(departementRepository.save(any(Departement.class))).thenReturn(departement);
 
-        Departement result = departementService.updateDepartement(departement);
+        Departement result = departementService.update(departement);
 
         assertNotNull(result);
         assertEquals("Marketing", result.getNomDepart());
@@ -90,7 +90,7 @@ public class DepartementServiceImplMockTest {
 
         when(departementRepository.findById(id)).thenReturn(Optional.of(departement));
 
-        Departement result = departementService.retrieveDepartement(id);
+        Departement result = departementService.retrieveOne(id);
 
         assertNotNull(result);
         assertEquals("Operations", result.getNomDepart());
@@ -106,7 +106,7 @@ public class DepartementServiceImplMockTest {
 
         when(departementRepository.findById(id)).thenReturn(Optional.of(departement));
 
-        departementService.deleteDepartement(id);
+        departementService.delete(id);
 
         verify(departementRepository, times(1)).delete(departement);
     }

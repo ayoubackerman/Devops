@@ -16,4 +16,14 @@ public interface IDepartementService {
 
     public  boolean deleteDepartement(Integer idDepartement);
 
+    public List<Departement> retrieve();
+
+    public Departement add (Departement d);
+
+    public   Departement update (Departement d);
+
+    public  Departement retrieveOne (Integer idDepart);
+
+    public  void delete(Integer idDepartement);
+
 }
